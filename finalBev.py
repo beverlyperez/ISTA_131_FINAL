@@ -5,12 +5,13 @@ import pandas as pd, numpy as np
 def SalesInRegion():
     df = pd.read_csv('vgsales.csv', index_col=0)
     dfM = df.mean()
-    mod = dfM[1:]
+    mod = dfM[1:5]
     data = mod.T
     plt.title("Popular Region")
     plt.ylabel("Sales (in Millions)", fontsize=20)
     plt.xlabel("Regions", fontsize=20)
     data.plot.bar(rot=0)
+    plt.show()
 
 def PopularGenre():
     df3 = pd.read_csv('vgsales.csv', index_col=0)
@@ -19,10 +20,11 @@ def PopularGenre():
     genre = list(dfT["Genre"])
     glo = list(dfT["Global_Sales"])
     df2 = pd.DataFrame(glo, genre)
-    plt.title("Customer Popular Genre")
+    df2.plot.bar(rot=4)
     plt.ylabel("Sales (in Millions)", fontsize=20)
     plt.xlabel("Genre", fontsize=20)
-    df2.plot.bar(rot=4)
+    plt.title("Customer Popular Genre")
+    plt.show()
 
 def AmountOfGenres():
     df = pd.read_csv('vgsales.csv', index_col=0)
@@ -36,15 +38,16 @@ def AmountOfGenres():
     for i in li:
         te = temp.count(i)
         cou.append(te)
-    #df2 = pd.DataFrame(cou, li)
-    #df2.plot.bar()
+    df2 = pd.DataFrame(cou, li)
+    df2.plot.bar()
     plt.plot
     plt.title("Popular Genre Among Companies")
     plt.ylabel("Number Released", fontsize=20)
     plt.xlabel("Genre", fontsize=20)
-
+    plt.show()
 
 def main():
     SalesInRegion()
     PopularGenre()
     AmountOfGenres()
+    
